@@ -11,12 +11,12 @@ my_token = '996901425:AAHeL5pN03vZZ2KouvIMbuhyJq4YrpRH3tI'
 
 
 def start(update, context):
-    keyboard = [[InlineKeyboardButton("افزودن تیم", callback_data='add_team'),
-                 InlineKeyboardButton("حذف تیم", callback_data='delete_team')],
-                [InlineKeyboardButton("افزودن سوال", callback_data='add_question'),
-                 InlineKeyboardButton("حذف سوال", callback_data='delete_question')]]
+    keyboard = [[KeyboardButton("افزودن تیم", callback_data='add_team'),
+                 KeyboardButton("حذف تیم", callback_data='delete_team')],
+                [KeyboardButton("افزودن سوال", callback_data='add_question'),
+                 KeyboardButton("حذف سوال", callback_data='delete_question')]]
 
-    reply_markup = InlineKeyboardMarkup(keyboard)
+    reply_markup = ReplyKeyboardMarkup(keyboard)
     bot = update.message.bot
     chat_id = update.message.chat_id
     bot.send_message(chat_id=chat_id, text='یکی از گزینه های زیر رو انتخاب کنید:', reply_markup=reply_markup)
