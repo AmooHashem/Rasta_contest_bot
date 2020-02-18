@@ -4,30 +4,38 @@ from telegram import KeyboardButton, ReplyKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 my_token = '996901425:AAHeL5pN03vZZ2KouvIMbuhyJq4YrpRH3tI'
-conn = sqlite3.connect('bot.db')
-c = conn.cursor()
-c.execute('create table users (chat_id int,state string);')
-c.execute('create table teams (number int,name string,score real);')
+
+
+# conn = sqlite3.connect('bot.db')
+# c = conn.cursor()
+# # c.execute('create table users (chat_id int,state string)')
+# # c.execute('create table teams (number int,name string,score real)')
 
 
 def start(update, context):
     bot = update.message.bot
     message = update.message
-
     print(message.chat_id)
     print(type(message.chat_id))
+    conn = sqlite3.connect('bot.db')
+    c = conn.cursor()
     # add user to database
-    c.execute('insert into users values ({},{});'.format(message.chat_id, "\'menu\'"))
+    c.execute('insert into users values ({},{})'.format(message.chat_id, "\'menu\'"))
 
     print(":))")
-
+    conn.commit()
+    conn.close()
+    print(":)))))))")
     # show initial messages to user
     keyboard = [[KeyboardButton("Change score"), KeyboardButton("Assign problem")],
                 [KeyboardButton("Suspend a team"), KeyboardButton("Show team solved problems")],
                 [KeyboardButton("Show team in-hand problems")]]
+    print(":))))))))))))))))))")
     reply_markup = ReplyKeyboardMarkup(keyboard)
-    bot.send_message(
-        'سلام منتور عزیز!\nخسته نباشی!\nایشالا مسابقه ی خوبی در پیش داشته باشیم!\n', reply_markup=reply_markup)
+    print(":))))))))))))))))))))))))))))))))))")
+    bot.send_message(chat_id=message.chat_id, text=
+    'سلام منتور عزیز!\nخسته نباشی!\nایشالا مسابقه ی خوبی در پیش داشته باشیم!',
+                     reply_markup=reply_markup)
 
 
 def admin(update, context):
