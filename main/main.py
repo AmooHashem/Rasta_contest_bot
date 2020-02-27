@@ -1,9 +1,9 @@
 import sqlite3
-
+import os
 from telegram import KeyboardButton, ReplyKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
-my_token = '996901425:AAHeL5pN03vZZ2KouvIMbuhyJq4YrpRH3tI'
+my_token = os.environ['TOKEN']
 
 
 # conn = sqlite3.connect('bot.db')
